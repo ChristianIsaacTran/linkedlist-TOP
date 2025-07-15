@@ -6,7 +6,22 @@ import linkedList from "./factories/linkedlist.js";
 // initialize a linkedlist object
 const linkedListFactory = linkedList(); 
 
+// append(value)
 linkedListFactory.append("new node 1");
 linkedListFactory.append("new node 2");
 linkedListFactory.append("new node 3");
+
+// toString()
 linkedListFactory.toString();
+
+// size()
+console.log(linkedListFactory.size());
+
+// prepend(value)
+linkedListFactory.prepend("new node 4");
+linkedListFactory.prepend("new node 5");
+
+linkedListFactory.toString();
+
+
+
