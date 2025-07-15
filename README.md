@@ -7,6 +7,9 @@ easier with practice.
 
 https://www.theodinproject.com/lessons/javascript-linked-lists
 
+
+<!-- I re-read the linked list factory functions and it does involve creating nodes with the passed value. -->
+
 # What is a linked list?
 To my understanding, a linked list is a linear sequential list similar to how 
 arrays work, but with "nodes" that contain 2 main items: the data (or whatever 
