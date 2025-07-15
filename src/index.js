@@ -34,3 +34,13 @@ console.log(linkedListFactory.getTail());
 
 // at(index)
 console.log(linkedListFactory.at(3));
+
+// pop()
+linkedListFactory.pop();
+
+linkedListFactory.toString();
+
+// contains(value)
+console.log(linkedListFactory.contains("new node 4"));
+console.log(linkedListFactory.contains("new node 7"));
+
