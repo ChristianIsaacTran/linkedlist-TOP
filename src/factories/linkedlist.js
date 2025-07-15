@@ -56,6 +56,7 @@ export default function linkedList() {
             return 0;
         }
 
+        // (edge cases 2 and 3)
         // iterate through linked list starting at head node. Increase counter for every non-null node found.
         let nodeCount = 0;
         let curr = head;
@@ -67,13 +68,34 @@ export default function linkedList() {
         return nodeCount;
     }
 
-    // function head() {
+    // returns the first node in the linked list
+    function getHead() {
+        // if linkedlist is empty (edge case 1), then return an error message
+        if(head === null) {
+            return console.log("Head = null, linked list is empty");
+        }
 
-    // }
+        // (edge case 2 and 3)
+        // otherwise, just return the head variable since that contains the first node (start of the list)
+        return head;
+    }
 
-    // function tail() {
+    // returns the last node in the linked list
+    function getTail() {
+        // if linkedlist is empty is empty (edge case 1), then return an error message
+        if(head === null) {
+            return console.log("Head = null, linked list is empty");
+        }
 
-    // }
+        // iterate to the last node and return the last node object.
+        let curr = head;
+        // if the current node's (curr) next node is null, we know its the last node
+        while(curr.nextNode !== null) {
+            curr = curr.nextNode;
+        }
+
+        return curr;
+    }
 
     // function at(inputIndex) {
 
@@ -109,5 +131,5 @@ export default function linkedList() {
         }
     }
 
-    return { append, toString, size, prepend };
+    return { append, toString, size, prepend, getHead, getTail };
 }

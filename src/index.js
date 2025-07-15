@@ -21,7 +21,12 @@ console.log(linkedListFactory.size());
 linkedListFactory.prepend("new node 4");
 linkedListFactory.prepend("new node 5");
 
+// toString()
 linkedListFactory.toString();
 
 
+// head()
+console.log(linkedListFactory.getHead());
 
+// tail()
+console.log(linkedListFactory.getTail());
