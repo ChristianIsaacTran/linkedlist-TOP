@@ -168,9 +168,32 @@ export default function linkedList() {
         return false;
     }
 
-    // function find(inputValue) {
+    // returns the index of the node containing the value, or null if the node is not found
+    function find(inputValue) {
+        // if the linkedlist is empty (edge case 1), then return an error message/null
+        if(head === null) {
+            console.log("Head = null, linked list is empty. Returning NULL, value not found.");
+            return null;
+        }
 
-    // }
+        // (edge case 2 and 3) 
+        // iterate through the linkedlist from the head and check if the current node's value matches the input value, or until we reach the end of the linkedlist
+        let curr = head; 
+
+        // return index of found node (assuming 0 index)
+        let indexCount = 0; 
+        while(curr !== null) {
+            if(curr.value === inputValue) {
+                return indexCount;
+            }
+            curr = curr.nextNode;
+            indexCount += 1;
+        }
+
+
+        // return null if we went through the entire linked list and have not found a matching value
+        return null;
+    }
 
     function toString() {
         if (head === null) {
@@ -190,5 +213,5 @@ export default function linkedList() {
         }
     }
 
-    return { append, toString, size, prepend, getHead, getTail, at, pop, contains};
+    return { append, toString, size, prepend, getHead, getTail, at, pop, contains, find };
 }

@@ -44,3 +44,8 @@ linkedListFactory.toString();
 console.log(linkedListFactory.contains("new node 4"));
 console.log(linkedListFactory.contains("new node 7"));
 
+// find(value)
+console.log(linkedListFactory.find("new node 4"));
+console.log(linkedListFactory.find("new node 2"));
+console.log(linkedListFactory.find("new node 7"));
+
