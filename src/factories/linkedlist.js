@@ -12,10 +12,10 @@ export default function linkedList() {
     */
 
     // adds new node to the end of the linked list
-    function append(value) {
+    function append(inputValue) {
         // if the linkedlist is empty, add the node as the head (edge case 1)
         if (head === null) {
-            head = nodes(value, null);
+            head = nodes(inputValue, null);
             return;
         }
 
@@ -30,14 +30,14 @@ export default function linkedList() {
         }
 
         // add given node to the end of the list by making the previous last node point to the new last node
-        curr.nextNode = nodes(value, null);
+        curr.nextNode = nodes(inputValue, null);
     }
 
     // adds a new node to the start of the linked list
-    function prepend(value) {
+    function prepend(inputValue) {
         // if linkedlist is empty, add node as the head (edge case 1)
         if (head === null) {
-            head = nodes(value, null);
+            head = nodes(inputValue, null);
             return;
         }
 
@@ -45,7 +45,7 @@ export default function linkedList() {
         /* make two temporary variables, one for the head and one for the new node to insert, then assign the new node to point to the head node, 
         then make the new node the head. */
         const curr = head;
-        const temp = nodes(value, curr);
+        const temp = nodes(inputValue, curr);
         head = temp;
     }
 
@@ -213,5 +213,103 @@ export default function linkedList() {
         }
     }
 
-    return { append, toString, size, prepend, getHead, getTail, at, pop, contains, find };
+    // extra credit functions:
+
+    // inserts a node with the value at the given index
+    function insertAt(inputValue, givenIndex) {
+        // if the linkedlist is empty AND the given index is not 0 (edge case 1), then return error message
+        if(head === null && givenIndex !== 0) {
+            return console.log("Head = null, linkedlist is empty and given index is NOT 0, exiting...");
+        }
+
+        // check if givenIndex is out of range of linkedList
+        if(givenIndex < 0 || givenIndex > (size() - 1)) {
+            return console.log("Given index is out of range");
+        }
+
+        // check if givenIndex is 0. If it is, then just insert this node as the head/start of the list (prepend)
+        if(givenIndex === 0) {
+            prepend(inputValue);
+            return;
+        }
+
+        // check if givenIndex is size() -1, if it is then append it to the end of the list (append)
+        if(givenIndex === (size() - 1)) {
+            append(inputValue);
+            return;
+        }
+
+        // (edge cases 2 and 3)
+        // if index passes all cases above, then iterate through list until we get to the desired index and make new node point to next node and previous node point to new node
+        let curr = head;
+        let prevNode;
+        for(let i = 0; i < givenIndex; i += 1) {
+            prevNode = curr;
+            curr = curr.nextNode;
+        }
+
+        // new node inserted at the current node's index will point to the current node, and the previous node will point to the new created node.
+        const newNode = nodes(inputValue, curr);
+        prevNode.nextNode = newNode;
+
+        /*
+        note: when inserting, the current node does not actually change, but we need to store it 
+        in a temporary variable so that when we make a new node, we can pass it as the new node's next node.
+        We also need to re-wire the previous node to now point to the new node instead of the current node:
+
+        before (insering at index 1): 
+        0           1           2
+        previous    current
+        (node 1) -> (node 2) -> (node 3) -> null
+
+        after (inserting at index 1):
+        0           1              2          3
+        previous                  current
+        (node 1) -> (new node) -> (node 2) -> (node 3) -> null
+        */
+    }
+
+    // removes the node at the given index
+    function removeAt(givenIndex) {
+        // if the linkedlist is empty (edge case 1), return error message
+        if(head === null) {
+            return console.log("Head = null, linked list is empty");
+        }
+
+        // check if givenIndex is out of range of linkedList
+        if(givenIndex < 0 || givenIndex > (size() - 1)) {
+            return console.log("Given index is out of range");
+        }
+
+
+        // check if index given is size()-1, end of the list (pop())
+        if(givenIndex === (size() - 1)) {
+            pop();
+            return;
+        }
+
+        let curr = head;
+
+        // if index given is the first element, check if theres only 1 element (edge case 2)
+        if(givenIndex === 0 && curr.nextNode === null) {
+            head = null;
+            return;
+        } else if(givenIndex === 0 && curr.nextNode !== null) {
+            head = curr.nextNode;
+            return;
+        }
+
+        // (edge case 3)
+        // iterate through linked list until at given index, and re-wire previous node to point at the .nextNode.nextNode
+        let prevNode;
+        for(let i = 0; i < givenIndex; i += 1) {
+            prevNode = curr;
+            curr = curr.nextNode;
+        }
+
+        // make the previous node point to the node that comes after the current node getting removed.
+        prevNode.nextNode = curr.nextNode;
+    }
+
+    return { append, toString, size, prepend, getHead, getTail, at, pop, contains, find, insertAt, removeAt };
 }

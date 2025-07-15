@@ -49,3 +49,18 @@ console.log(linkedListFactory.find("new node 4"));
 console.log(linkedListFactory.find("new node 2"));
 console.log(linkedListFactory.find("new node 7"));
 
+
+// extra credit functions: *******
+
+// insertAt(value, index) 
+console.log("Before insert: ");
+linkedListFactory.toString();
+linkedListFactory.insertAt("new node 8", 2);
+console.log("After insert: ");
+linkedListFactory.toString();
+
+//removeAt(index)
+linkedListFactory.removeAt(3);
+linkedListFactory.toString();
+
+
