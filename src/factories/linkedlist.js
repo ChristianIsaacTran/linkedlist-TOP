@@ -97,9 +97,29 @@ export default function linkedList() {
         return curr;
     }
 
-    // function at(inputIndex) {
+    // returns the node at the given index (parameter)
+    function at(inputIndex) {
+        // assuming the linked list starts at 0 index
+        // if linkedlist is empty (edge case 1), return an error message
+        if(head === null) {
+            return console.log("Head = null, linked list is empty");
+        }
 
-    // }
+        // check if the index given exceeds 0 or size() - 1 (out of bounds)
+        if(inputIndex < 0 || inputIndex > (size() - 1)) {
+            return console.log("Input Index given is out of range of linked list");
+        }
+
+        // (edge cases 2 and 3)
+        // iterate through linked list until it reaches inputIndex. 
+        let curr = head;
+        for(let i = 0; i < inputIndex; i += 1) {
+            curr = curr.nextNode;
+        }   
+
+        // return node found at stopped index
+        return curr;
+    }
 
     // function pop() {
 
@@ -131,5 +151,5 @@ export default function linkedList() {
         }
     }
 
-    return { append, toString, size, prepend, getHead, getTail };
+    return { append, toString, size, prepend, getHead, getTail, at };
 }

@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 // import "./style.css";
 
 import linkedList from "./factories/linkedlist.js";
@@ -30,3 +31,6 @@ console.log(linkedListFactory.getHead());
 
 // tail()
 console.log(linkedListFactory.getTail());
+
+// at(index)
+console.log(linkedListFactory.at(3));
